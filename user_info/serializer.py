@@ -15,6 +15,22 @@ class UserDescSerializer(serializers.ModelSerializer):
         ]
 
 
+class UserDetailSerializer(serializers.ModelSerializer):
+    """更为详细的用户信息展示"""
+
+    class Meta:
+        model = User
+        fields = [
+            'id',
+            'username',
+            'last_name',
+            'first_name',
+            'email',
+            'last_login',
+            'date_joined'
+        ]
+
+
 # 用户注册
 class UserRegisterSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(view_name='user-detail', lookup_field='username')
